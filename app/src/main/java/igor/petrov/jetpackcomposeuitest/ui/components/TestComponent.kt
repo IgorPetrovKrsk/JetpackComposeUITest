@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun TestComponent(shortDescription: String, description: String) {
+fun TestComponentShortDescription(shortDescription: String) {
 
     Column(modifier = Modifier
         .fillMaxWidth()
@@ -68,8 +68,64 @@ fun TestComponent(shortDescription: String, description: String) {
 
 }
 
+@Composable
+fun TestComponentDescription(Description: String) {
+
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .background(Color.Red.copy(alpha = 0.5f))
+        .padding( 8.dp)) {
+
+        Row(modifier = Modifier
+            .padding(horizontal = 8.dp)
+            .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Icon(
+                    imageVector = Icons.Filled.CheckCircle,
+                    contentDescription = null,
+                    tint = Color.White
+                )
+                Text(text = "Project X", fontSize = 24.sp, color = Color.White)
+            }
+            Row() {
+                Icon(
+                    imageVector = Icons.Sharp.Menu,
+                    contentDescription = null,
+                    tint = Color.White
+                )
+
+            }
+        }
+        Spacer(modifier = Modifier
+            .height(8.dp))
+        Text(text = Description,
+            fontSize = 12.sp,
+            color = Color.White,
+            modifier = Modifier
+                .padding(horizontal = 40.dp))
+        Spacer(modifier = Modifier
+            .height(8.dp))
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp), horizontalArrangement = Arrangement.End) {
+            Text(text = "Sep 9, 10:30", color = Color.White)
+        }
+    }
+
+}
+
+
 @Preview
 @Composable
-fun TestComponentPreview() {
-    TestComponent("This is a short description", "Bacon ipsum dolor amet pork chop flank")
+fun TestComponentShortDescriptionPreview() {
+    TestComponentShortDescription("This is a short description", )
+}
+
+@Preview
+@Composable
+fun TestComponentDescriptionPreview() {
+    TestComponentDescription("Bacon ipsum dolor amet pork chop flank")
 }
